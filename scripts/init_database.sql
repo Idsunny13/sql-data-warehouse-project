@@ -9,6 +9,16 @@ Script Purpose
 USE master;
 GO
 
+	
+-- Drop and Recreate the DataWareHouse database
+IF EXIST(SELECT 1 FROM sys.database WHERE name = 'DataWarehHouse')
+BEGIN
+	ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	DROP DATABASE DataWarehouse;
+END;
+GO
+
+	
 --Create the 'Data warehouse' database
 CREATE DATABASE DataWarehouse;
 GO
